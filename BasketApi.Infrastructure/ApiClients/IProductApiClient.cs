@@ -1,6 +1,6 @@
 ﻿using BasketApi.Domain;
 
-namespace BasketApi.Infrastructure.Clients;
+namespace BasketApi.Infrastructure.ApiClients;
 
 public interface IProductApiClient
 {

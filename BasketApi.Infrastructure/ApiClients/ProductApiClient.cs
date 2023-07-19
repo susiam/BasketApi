@@ -3,7 +3,7 @@ using BasketApi.Infrastructure.Services;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace BasketApi.Infrastructure.Clients;
+namespace BasketApi.Infrastructure.ApiClients;
 
 public class ProductApiClient : IProductApiClient
 {

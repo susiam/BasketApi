@@ -1,5 +1,4 @@
-﻿using BasketApi.Infrastructure.Clients;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 
 namespace BasketApi.Infrastructure.Services;
 
@@ -24,5 +23,22 @@ public sealed class CachingService : ICachingService
         }
 
         return data;
+    }
+
+    public T Get<T>(string key)
+    {
+        return _cache.Get<T>(key);
+    }
+
+    public void Set<T>(string key, T data)
+    {
+        var cacheEntryOptions = new MemoryCacheEntryOptions()
+               .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
+        _cache.Set(key, data, cacheEntryOptions);
+    }
+
+    public void Remove(string key)
+    {
+        _cache.Remove(key);
     }
 }

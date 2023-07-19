@@ -1,4 +1,4 @@
-﻿namespace BasketApi.Domain
+﻿namespace BasketApi.Unit.Tests
 {
     public class Class1
     {

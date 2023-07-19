@@ -2,7 +2,7 @@
 
 public class CreateOrder
 {
-    public string UserEmail { get;}
-    public double TotalAmount { get;}
-    public IEnumerable<OrderLine> OrderLines { get;}
+    public string? UserEmail { get; set; }
+    public double TotalAmount { get; set; }
+    public IEnumerable<OrderLine> OrderLines { get; set; }
 }
