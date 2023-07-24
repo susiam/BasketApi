@@ -39,7 +39,7 @@ namespace BasketApi.Controllers
         public async Task<IActionResult> AddProduct(Guid basketId, BasketItem product)
         {
             var basket = await _basketService.AddProductToBasket(basketId, product);
-             return basket == default ? NotFound(basketId) : Ok(basket);
+            return basket == default ? NotFound(basketId) : Ok(basket);
         }
 
         [HttpDelete("{basketId}/products/{productId}")]
@@ -48,16 +48,16 @@ namespace BasketApi.Controllers
         public IActionResult RemoveProduct(Guid basketId, BasketItem product)
         {
             var basket = _basketService.RemoveProductFromBasket(basketId, product);
-             return basket == default ? NotFound(basketId) : Ok(basket);
+            return basket == default ? NotFound(basketId) : Ok(basket);
         }
 
-        [HttpPost("{basketId}/submit")]
-        [ProducesResponseType(200, Type = typeof(Basket))]
+        [HttpPost("{basketId}/checkout")]
+        [ProducesResponseType(200, Type = typeof(string))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> CheckoutBasket(Guid basketId)
         {
-            await _basketService.CheckoutBasket(basketId);
-            return Ok();
+            var orderid = await _basketService.CheckoutBasket(basketId);
+             return string.IsNullOrEmpty(orderid) ? NotFound() : Ok(orderid);
         }
 
         [HttpDelete("{basketId}")]

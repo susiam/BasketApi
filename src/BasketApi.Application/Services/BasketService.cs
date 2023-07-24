@@ -75,7 +75,7 @@ public class BasketService : IBasketService
         return null;
     }
 
-    public async Task<Basket?> CheckoutBasket(Guid baskedId)
+    public async Task<string?> CheckoutBasket(Guid baskedId)
     {
         var basket = _cache.Get<Basket>(baskedId.ToString());
         if (basket != null)
@@ -87,8 +87,10 @@ public class BasketService : IBasketService
             };
             var createOrder = await _productApiClient.CreateOrder(finalOrder);
             _cache.Remove(baskedId.ToString());
-            return basket;
+
+            return createOrder.OrderId;
         }
+
         return null; 
     }
 

@@ -134,11 +134,12 @@ public sealed class BasketControllerTests
     public async Task CheckoutBasket_ReturnsOk_WhenCheckoutIsSuccessful()
     {
         // Arrange
-        var basket = _fixture.Create<Basket>();
-        _basketServiceMock.Setup(bs => bs.CheckoutBasket(basket.BasketId)).ReturnsAsync(basket);
+        var orderId = Guid.NewGuid().ToString();
+        var basketId = Guid.NewGuid();
+        _basketServiceMock.Setup(bs => bs.CheckoutBasket(basketId)).ReturnsAsync(orderId);
 
         // Act
-        var result = await _basketController.CheckoutBasket(basket.BasketId);
+        var result = await _basketController.CheckoutBasket(basketId);
 
         // Assert
         Assert.IsType<OkResult>(result);

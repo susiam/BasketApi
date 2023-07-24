@@ -16,10 +16,4 @@
 		<ProjectReference Include="..\BasketApi.Application\BasketApi.Application.csproj" />
 		<ProjectReference Include="..\BasketApi.Infrastructure\BasketApi.Infrastructure.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-
-		<InternalsVisibleTo Include="..\..\tests\BasketApi.Integration.Tests" />
-	</ItemGroup>
-
-
 </Project>

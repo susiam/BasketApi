@@ -7,7 +7,7 @@ public interface IBasketService
     Basket? GetBasket(Guid baskedId);
     Task<Basket?> AddProductToBasket(Guid baskedId, BasketItem product);
     Basket? RemoveProductFromBasket(Guid baskedId, BasketItem product);
-    Task<Basket> CheckoutBasket(Guid baskedId);
+    Task<string?> CheckoutBasket(Guid baskedId);
     Guid CreateBasket();
     void ClearBasket(Guid basketId);
 }
